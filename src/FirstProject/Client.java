@@ -13,14 +13,15 @@ public class Client {
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());
         System.out.println("Client connected to socket.");
-        System.out.println("Client writing channel = out & reading channel = in initialized.");
         while(!socket.isOutputShutdown()){
             if(input.ready()){
-                System.out.println("Client start writing in channel...");
                 Thread.sleep(1000);
+                System.out.print("Type message: ");
                 String clientCommand = input.readLine();
-                
+                out.writeUTF(clientCommand);
+                out.flush();
             }
         }
+        //должен кидать не только сообщения но и команды. а сервер должен их выполнять 
     }
 }

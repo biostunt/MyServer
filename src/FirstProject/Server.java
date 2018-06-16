@@ -14,7 +14,7 @@ public class Server {
         System.out.println("DataOutputStream  created");
         DataInputStream in = new DataInputStream(client.getInputStream());
         System.out.println("DataInputStream created");
-
+        // Сделать так, чтобы сервер не закрывал соединение, а ждал нового подключения
         while(client.isConnected()){
             System.out.println("Server reading from channel");
             String entry = in.readUTF();
